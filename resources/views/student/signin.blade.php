@@ -85,7 +85,7 @@
    <form class="register-form" onsubmit="return false;">
       <h3>Registráte</h3>
       <a href="{{ route('student.create') }}" class="btn">Estudiantes y Egresados</a>
-      <a href="{{ route('student.create') }}" class="btn">Empresa</a>
+      <a href="{{ route('business.create') }}" class="btn">Empresa</a>
    </form>
 
 </div>

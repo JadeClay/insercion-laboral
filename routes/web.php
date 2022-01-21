@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\BusinessController;
 
 
 /*
@@ -18,6 +19,8 @@ use App\Http\Controllers\StudentController;
 Auth::routes();
 
 Route::resource('student', StudentController::class);
+
+Route::resource('business', BusinessController::class);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 

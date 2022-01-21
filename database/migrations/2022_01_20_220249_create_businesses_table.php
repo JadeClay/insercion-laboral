@@ -16,7 +16,7 @@ class CreateBusinessesTable extends Migration
         Schema::create('businesses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('RNC');
+            $table->BigInteger('RNC');
             $table->boolean('wantsAnonimity');
             $table->boolean('hasFormationDepartment');
             $table->string('economicalActivity');
@@ -32,7 +32,7 @@ class CreateBusinessesTable extends Migration
             $table->BigInteger('directPhone');
             $table->string('contactName');
             $table->BigInteger('contactNumber');
-            $table->string('email');
+            $table->string('contactEmail');
             $table->BigInteger('user_id')->nullable();
             $table->timestamps();
         });

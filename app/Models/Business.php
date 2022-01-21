@@ -27,6 +27,6 @@ class Business extends Model
         'directPhone',
         'contactName',
         'contactNumber',
-        'email',
+        'contactEmail',
     ];
 }
