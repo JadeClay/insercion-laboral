@@ -48,7 +48,7 @@
       <span class="btn active login-btn">Login</span>
       <span class="btn register-btn">Registráte</span>
    </div>
-
+   @guest
    <form class="login-form active" method="POST" action="{{ route('login') }}">
       <h3>Iniciar sesión</h3>
       @csrf
@@ -63,6 +63,24 @@
           disabled
       @endauth>
    </form>
+   @endguest
+   @auth
+      <form class="login-form active" method="POST" action="{{ route('logout') }}">
+         <h3>Salir de la sesión</h3>
+         @csrf
+         <input type="email" placeholder="Desactivado" class="box" name="email" disabled>
+         <input type="password" placeholder="Desactivado" class="box" name="password" disabled>
+         <div class="flex">
+            <input type="checkbox" name="remember" id="remember-me" disabled>
+            <label for="remember-me">Recuérdame </label>
+            <a href="#" disabled>Olvidaste la contraseña?</a>
+         </div>
+
+         <input type="submit" value="Salir de la sesión" class="btn">
+      </form>
+   @endauth
+
+
 
    <form class="register-form" onsubmit="return false;">
       <h3>Registráte</h3>
