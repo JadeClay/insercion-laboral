@@ -33,6 +33,7 @@ class CreateBusinessesTable extends Migration
             $table->string('contactName');
             $table->BigInteger('contactNumber');
             $table->string('email');
+            $table->BigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -27,61 +27,56 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <!-- header section starts  -->
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+<header class="header">
 
-                    </ul>
+<a href="home.html" class="logo"><i class="fas fa-building"></i> OILP </a>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+<nav class="navbar">
+   <div id="close-navbar" class="fas fa-times"></div>
+   <a href="home.html">Inicio</a>
+   <a href="#">Acerca</a>
+   <a href="#">contacto</a>
+</nav>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+<div class="icons">
+   <div id="account-btn" class="fas fa-user"></div>
+   <div id="menu-btn" class="fas fa-bars"></div>
+</div>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+</header>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<!-- account form section starts  -->
 
+<div class="account-form">
+
+<div id="close-form" class="fas fa-times"></div>
+
+<div class="buttons">
+   <span class="btn active login-btn">login</span>
+   <span class="btn register-btn">registrar</span>
+</div>
+
+<form class="login-form active" method="POST" action="">
+   <h3>Iniciar sesión</h3>
+   <input type="email" placeholder="ingresa tu email" class="box">
+   <input type="password" placeholder="ingresa tu contraseña" class="box">
+   <div class="flex">
+      <input type="checkbox" name="" id="remember-me">
+      <label for="remember-me">recuerdame </label>
+      <a href="#">olvidaste la contraseña?</a>
+   </div>
+   <input type="submit" value="iniciar sesión" class="btn">
+</form>
+
+<form class="register-form" onsubmit="return false;">
+   <h3>registrar</h3>
+   <a href="estudiantes.html" class="btn">Estudiantes y egresados</a>
+   <a href="egresados.html" class="btn">empresa</a>
+</form>
+
+</div>
         <main class="py-4">
             @yield('content')
         </main>

@@ -16,7 +16,6 @@ class Student extends Model
         'birthday',
         'sex',
         'direction',
-        'sector',
         'municipality',
         'province',
         'nationality',

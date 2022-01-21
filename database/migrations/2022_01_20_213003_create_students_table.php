@@ -21,25 +21,23 @@ class CreateStudentsTable extends Migration
             $table->date('birthday');
             $table->string('sex');
             $table->string('direction');
-            $table->string('sector');
             $table->string('municipality');
             $table->string('province');
-            $table->boolean('nationality');
+            $table->boolean('nationality'); // 0 if dominican, 1 if foreigner
             $table->BigInteger('homeNumber');
             $table->BigInteger('cellphone');
             $table->boolean('hasDrivingLicense');
             $table->boolean('hasVehicle');
-            $table->year('graduationYear');
+            $table->BigInteger('graduationYear');
             $table->string('school');
             $table->string('grade');
             $table->string('enrollmentID');
             $table->string('career');
             $table->integer('experience');
             $table->string('workArea');
-            $table->unsignedBigInteger('user_id');
-            $table->BigInteger('offer_id');
-            $table->string('cv_path');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->BigInteger('user_id')->nullable();
+            $table->BigInteger('offer_id')->nullable();
+            $table->string('cv_path')->nullable();
             $table->timestamps();
         });
     }
