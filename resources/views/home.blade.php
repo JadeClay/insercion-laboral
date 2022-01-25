@@ -57,23 +57,26 @@
       <div class="flex">
          <input type="checkbox" name="remember" id="remember-me">
          <label for="remember-me">Recuérdame </label>
-         <a href="#">Olvidaste la contraseña?</a>
       </div>
-      <input type="submit" value="iniciar sesión" class="btn" @auth
-          disabled
-      @endauth>
+      <input type="submit" value="iniciar sesión" class="btn">
    </form>
    @endguest
    @auth
       <form class="login-form active" method="POST" action="{{ route('logout') }}">
-         <h3>Salir de la sesión</h3>
+         <h3>Está logueado</h3>
          @csrf
-         <input type="email" placeholder="Desactivado" class="box" name="email" disabled>
-         <input type="password" placeholder="Desactivado" class="box" name="password" disabled>
+         <input type="email" placeholder="{{ Auth::user()->email }}" class="box" name="email" disabled>
+         <input type="text" placeholder="" class="box" name="password" value="
+         @if (Auth::user()->role = 0)
+            Egresado
+         @elseif(Auth::user()->role = 1)
+            Empresa
+         @else
+            Administrador
+         @endif" disabled>
          <div class="flex">
             <input type="checkbox" name="remember" id="remember-me" disabled>
             <label for="remember-me">Recuérdame </label>
-            <a href="#" disabled>Olvidaste la contraseña?</a>
          </div>
 
          <input type="submit" value="Salir de la sesión" class="btn">
