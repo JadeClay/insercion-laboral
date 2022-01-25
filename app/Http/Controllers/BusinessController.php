@@ -39,7 +39,7 @@ class BusinessController extends Controller
         $user = new User;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->role = 1;
+        $user->role = 2;
         $user->save();
 
         $business = Business::create($request->except('_token','email','password'));

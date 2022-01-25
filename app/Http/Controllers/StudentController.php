@@ -39,7 +39,7 @@ class StudentController extends Controller
         $user = new User;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->role = 0;
+        $user->role = 1;
         $user->save(); // Create user retrieving the info from request.
 
         // Saving the id of the user
