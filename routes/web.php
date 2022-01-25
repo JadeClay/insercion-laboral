@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\OfferController;
 
 
 /*
@@ -21,6 +22,16 @@ Auth::routes();
 Route::resource('student', StudentController::class);
 
 Route::resource('business', BusinessController::class);
+
+Route::resource('offer', OfferController::class);
+
+Route::get('/stats', function () {
+    return view('stats');
+})->name('stats');
+
+Route::get('/contacts', function(){
+    return view('contacts');
+})->name('contacts');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 

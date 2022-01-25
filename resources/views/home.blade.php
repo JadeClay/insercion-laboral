@@ -22,13 +22,14 @@
 
 <header class="header">
 
-   <a href="{{ route('home') }}" class="logo"><i class="fas fa-building"></i> OILP </a>
+   <a href="{{ route('home') }}" class="logo"><i class="fas fa-building"></i> OILP-IPISA </a>
 
    <nav class="navbar">
       <div id="close-navbar" class="fas fa-times"></div>
       <a href="{{ route('home') }}">Inicio</a>
-      <a href="#">Acerca</a>
-      <a href="#">contacto</a>
+      <a href="{{ route('offer.index') }}">Vacantes</a>
+      <a href="{{ route('stats') }}">Estadisticas</a>
+      <a href="{{ route('contacts') }}">Contacto</a>
    </nav>
 
    <div class="icons">
@@ -66,14 +67,8 @@
          <h3>Está logueado</h3>
          @csrf
          <input type="email" placeholder="{{ Auth::user()->email }}" class="box" name="email" disabled>
-         <input type="text" placeholder="" class="box" name="password" value="
-         @if (Auth::user()->role = 0)
-            Egresado
-         @elseif(Auth::user()->role = 1)
-            Empresa
-         @else
-            Administrador
-         @endif" disabled>
+         <input type="password" placeholder="" class="box" name="password" value="..." disabled>
+         
          <div class="flex">
             <input type="checkbox" name="remember" id="remember-me" disabled>
             <label for="remember-me">Recuérdame </label>
@@ -144,6 +139,8 @@
 
 <!-- custom js file link  -->
 <script src="{{ asset('js/script.js') }}"></script>
+
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
 </body>
 </html>

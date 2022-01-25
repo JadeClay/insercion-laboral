@@ -14,6 +14,7 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+   <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 
 </head>
 <body>
@@ -22,13 +23,14 @@
 
 <header class="header">
 
-   <a href="{{ route('home') }}" class="logo"><i class="fas fa-building"></i> OILP </a>
+   <a href="{{ route('home') }}" class="logo"><i class="fas fa-building"></i> OILP-IPISA </a>
 
    <nav class="navbar">
       <div id="close-navbar" class="fas fa-times"></div>
       <a href="{{ route('home') }}">Inicio</a>
-      <a href="#">Acerca</a>
-      <a href="#">contacto</a>
+      <a href="{{ route('offer.index') }}">Vacantes</a>
+      <a href="{{ route('stats') }}">Estadisticas</a>
+      <a href="{{ route('contacts') }}">Contacto</a>
    </nav>
 
    <div class="icons">
@@ -67,9 +69,9 @@
          @csrf
          <input type="email" placeholder="{{ Auth::user()->email }}" class="box" name="email" disabled>
          <input type="text" placeholder="" class="box" name="password" value="
-         @if (Auth::user()->role = 0)
+         @if (Auth::user()->role = 1)
             Egresado
-         @elseif(Auth::user()->role = 1)
+         @elseif(Auth::user()->role = 2)
             Empresa
          @else
             Administrador
@@ -208,23 +210,9 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 
-<!-- sweetalert js link  -->
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    var element = document.getElementById("#register");
-    element.addEventListener('click', function(){
-	    Swal.fire(
-            '¡Buen Trabajo!',
-            '¡Se ha agregado exitosamente!',
-            'success'
-        )
-    });
-</script>
-
-
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
 </body>
 </html>

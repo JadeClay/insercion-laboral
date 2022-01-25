@@ -42,7 +42,7 @@ document.querySelector('#close-form').onclick = () =>{
 
 var swiper = new Swiper(".home-slider", {
   autoplay: {
-    delay: 4000,
+    delay: 3000,
     disableOnInteraction: false,
   },
   pagination: {
