@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +13,17 @@
 
 
     <!-- custom css file link  -->
+   <link rel="stylesheet" href="{{ asset('css/offer.css') }}">
    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-   <link rel="stylesheet" href="{{ asset('css/vacante.css') }}">
 
 
 </head>
 <body>
     <!-- header section starts  -->
+    <?php
+        $authUser = $users->find(Auth::user());
+        $userRole = $authUser->role;
+    ?>
     <header class="header">
 
         <a href="{{ route('home') }}" class="logo"><i class="fas fa-building"></i> OILP-IPISA </a>
@@ -91,94 +96,109 @@
  
  <!-- header section ends -->
 
-
-
     <div class="container">
         <div class="row my-5">
           <div class="col-lg-12">
             <div class="card shadow">
               <div class="card-header bg-blue d-flex justify-content-between align-items-center">
-                <h3 class="text-light">Manejar Vacantes</h3>
-                <a href="añadir_vacante.html" class="btn btn-light"><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
+                <h3 class="text-light"><?php if($userRole == 3){ echo "Manejar";}  ?> Vacantes</h3>
+                <a href="@if ($userRole == 2) {{ route('offer.create') }} @endif" class="btn btn-light" ><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
               </div>
               <div class="card-body" id="show_all_employees">
-                <h1 class="text-center text-secondary my-5">No hay registros en la base de datos</h1>
-    
                 <div style="overflow-x: auto;">
-                <table class="table table-striped table-sm text-center align-middle" id="data-table" >
-                    <thead>
-                      <tr>
-                        <th>Nombre de la Empresa</th>
-                        <th>Nombre del Puesto</th>
-                        <th>Perfil del puesto</th>
-                        <th>Sueldo</th>
-                        <th>Ubicación</th>
-                        <th>Tipo de contrato</th>
-                        <th>Horario</th>
-                        <th>E-mail Curriculum</th>
-                        <th>Persona de Contacto</th>
-                        <th>Teléfono</th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                    <table class="table table-striped table-sm text-center align-middle" id="data-table" >
+                        <thead>
                         <tr>
-                        <td>fff</td>
-                        <td>fff</td>
-                        <td>fff</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <a href="editar_vacante.html" id="" class="text-success mx-1 editIcon"><i class="bi-pencil-square h4"></i></a>
-        
-                          <button id="deleteIcon" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
-                        </td>
-                      </tr>
-                    </tbody>
-                </table>
+                            <th>Nombre de la Empresa</th>
+                            <th>Nombre del Puesto</th>
+                            <th>Perfil del puesto</th>
+                            <th>Sueldo</th>
+                            <th>Ubicación</th>
+                            <th>Tipo de contrato</th>
+                            <th>Horario</th>
+                            <th>E-mail Curriculum</th>
+                            <th>Persona de Contacto</th>
+                            <th>Teléfono</th>
+                            <th>Estado</th>
+                            @if($userRole == 3)
+                                <th>Acciones</th>
+                            @endif
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($offers as $offer)
+                                <tr>
+                                    <td><?php 
+                                        $business = $businesses->find($offer->business_id); 
+
+                                        if(!empty($business->id)){
+                                            echo $business->name;
+                                        }
+                                        
+                                    ?></td>
+                                    <td>{{ $offer->name }}</td>
+                                    <td>{{ $offer->description }}</td>
+                                    <td>{{ $offer->salary }}</td>
+                                    <td>{{ $offer->location }}</td>
+                                    <td><?php 
+                                        if($offer->contractType == 0){
+                                            echo "Temporal";
+                                        } else{
+                                            echo "Indefinido";
+                                        }
+                                    ?></td>
+                                    <td>{{ $offer->schedule }}</td>
+                                    <td>{{ $offer->contactMail }}</td>
+                                    <td>{{ $offer->contactName }}</td>
+                                    <td>{{ $offer->contactNumber }}</td>
+                                    <td><?php if($offer->status == 0){
+                                        echo "<p style='color: yellow;'><i class='fas fa-exclamation-triangle'></i><b>Pendiente</b></p>";
+                                    }else{
+                                        echo "<p style='color: red;'><i class='fas fa-window-close'></i><b>ASIGNADA</b></p>";
+                                    } ?></td>
+
+                                    @if($userRole == 3)
+                                        <td>
+                                            <a href="editar_vacante.html" id="" class="text-success mx-1 editIcon"><i class="bi-pencil-square h4"></i></a>
+                                            
+                                            <form action="{{ route('offer.destroy', $offer->id) }}" method="post">
+                                                <button type="submit" id="deleteIcon" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
+                                            </form>
+                                        
+                                        </td>
+                                    @endif                                        
+                    
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
-            
-              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- custom js file link  -->
-    <script src="js/script.js"></script>
+<!-- swiper js link  -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-    
-<!-- sweetalert js link  -->
-<script src="js/sweetalert2.all.min.js"></script>
+<!-- custom js file link  -->
+<script src="{{ asset('js/script.js') }}"></script>
 
-<script>
-    document.querySelector('#deleteIcon').onclick = () =>{
-    Swal.fire({
-    title: '¿Estás seguro?',
-    text: "¡No podrás revertir esto!",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: '¡Sí, eliminalo!'
-    }).then((result) => {
-    if (result.isConfirmed) {
-        Swal.fire(
-        '¡Eliminado!',
-        'El registro ha sido eliminado.',
-        'success'
-        )
-    }
-    })
-    }
-</script>
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
-   
-  
+
+@if (session()->has('success'))
+    <script>
+        window.onload = Swal.fire({
+            title: 'Éxito!',
+            text: '{{ $offers }}',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+        })
+    </script>
+@endif
+
 </body>
 </html>

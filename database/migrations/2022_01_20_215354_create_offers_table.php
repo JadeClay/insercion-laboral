@@ -24,6 +24,7 @@ class CreateOffersTable extends Migration
             $table->string('contactName');
             $table->string('contactMail');
             $table->BigInteger('contactNumber');
+            $table->BigInteger('business_id')->nullable();
             $table->boolean('status'); // 0 if unfulfilled, 1 if already fulfilled.
             $table->timestamps();
         });

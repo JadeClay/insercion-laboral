@@ -19,6 +19,7 @@ class Offer extends Model
         'contactName',
         'contactMail',
         'contactNumber',
+        'business_id',
         'status',
     ];
 }

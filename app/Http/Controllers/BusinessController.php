@@ -45,7 +45,7 @@ class BusinessController extends Controller
         $business = Business::create($request->except('_token','email','password'));
         $affectedRows = Business::where('RNC', '=', $request->RNC)->update(['user_id' => $user->id]);
 
-        return redirect(route('home'));
+        return redirect(route('home'))->withSuccess('Se ha registrado con éxito!');
     }
 
     /**

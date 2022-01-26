@@ -28,5 +28,6 @@ class Business extends Model
         'contactName',
         'contactNumber',
         'contactEmail',
+        'user_id',
     ];
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Offer;
+use App\Models\User;
+use App\Models\Business;
 
 class OfferController extends Controller
 {
@@ -12,8 +15,9 @@ class OfferController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('offer.index');
+    {   
+        $offers = Offer::simplePaginate(5);
+        return view('offer.index',["offers" => $offers, "users" => User::all(), "businesses" => Business::all()]);
     }
 
     /**
@@ -34,7 +38,14 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $business_id = Business::where('user_id', '=', $request->user_id)->get('id','name');
+        $offer = Offer::create($request->except('_token','user_id'));
+        foreach ($business_id as $business) {
+            $id = $business->id;
+            $affectedRows = Offer::where('id', '=', $offer->id)->update(['business_id' => $id]);
+        }
+        
+        return redirect(route('home'))->withSuccess('Se ha registrado con éxito!');;
     }
 
     /**

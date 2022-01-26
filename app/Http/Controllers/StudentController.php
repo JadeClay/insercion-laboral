@@ -50,13 +50,11 @@ class StudentController extends Controller
 
         // Storing the student
         $student = Student::create($request->except('_token','email','cv_path','password'));
-        //$studentID = Student::where('name', '=', $request->name);
-        //$modifyStudent = Student::findOrFail($studentID->id);
         
         $affectedRows = Student::where('identification', '=', $request->identification)->update(['cv_path' => $cv_path]);
         $affectedRows = Student::where('identification', '=', $request->identification)->update(['user_id' => $user->id]);
 
-        return redirect(route('home'));
+        return redirect(route('home'))->withSuccess('Se ha registrado con éxito!');
     }
 
     /**
