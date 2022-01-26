@@ -21,8 +21,6 @@
 <body>
 
 <!-- header section starts  -->
-
-<!-- header section starts  -->
 @auth
    <?php
         $authUser = $users->find(Auth::user());
@@ -110,58 +108,25 @@
  <!-- header section ends -->
 
  <div class="container">
-    <div class="title">Registro de vacantes</div>
+    <div class="title">Editando estado de vacante</div>
     <div class="content">
-      <form action="{{ route('offer.store') }}" method="POST">
+      <form action="{{ route('offer.update', $offer->id) }}" method="POST">
         @csrf
+        @method('PATCH')
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Nombre del Puesto</span>
-            <input type="text" placeholder="Ingresa el nombre del puesto" name="name" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Funciones o perfil del puesto</span>
-            <textarea rows="3" cols="40" placeholder="Ingresa la descripción del puesto" name="description"></textarea>
-          </div>
-          <div class="input-box">
-            <span class="details">Sueldo</span>
-            <input type="number" value="0" min="0" oninput="validity.valid||(value='');" placeholder="Ingresa el sueldo" name="salary" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Ubicación</span>
-            <input type="text" placeholder="Ingresa tu dirección" required name="location">
-          </div>
-          <div class="input-box">
-            <span class="details">Tipo de contracto</span>
-            <select class="form-control" name="contractType">
+            <span class="details">Estado de la Oferta</span>
+            <select class="form-control" name="status">
                 <option selected>----Selecciona----</option>
-                <option value="0">Temporal</option>
-                <option value="1">Fijo</option>
+                <option value="0">Pendiente</option>
+                <option value="1">Asignada</option>
               </select>
           </div>
-          <div class="input-box">
-            <span class="details">Horario</span>
-            <input type="text" placeholder="Ingresa el horario" name="schedule">
-          </div>
-          <div class="input-box">
-            <span class="details">Correo</span>
-            <input type="email" placeholder="Ingresa el email al que se debe enviar el curriculum" name="contactMail">
-          </div>
-          <div class="input-box">
-            <span class="details">Persona de contacto</span>
-            <input type="text" placeholder="Ingresa el nombre de la persona" required name="contactName">
-          </div>
-          <div class="input-box">
-            <span class="details">Teléfono</span>
-            <input type="tel" placeholder="Ingresa el teléfono" required name="contactNumber">
-          </div>
-          <input type="hidden" name="status" value="0">
-          <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
         </div>
 
         <div class="button">
-          <input type="submit" id="register" value="Crear">
+          <input type="submit" id="register" value="Editar">
         </div>
       </form>
     </div>

@@ -111,67 +111,75 @@
           <div class="col-lg-12">
             <div class="card shadow">
               <div class="card-header bg-blue d-flex justify-content-between align-items-center">
-                <h3 class="text-light"><?php if($userRole == 3){ echo "Manejar";}  ?> Vacantes</h3>
-                <a href="@if ($userRole == 2) {{ route('offer.create') }} @endif" class="btn btn-light" ><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
+                <h3 class="text-light"><?php if($userRole == 3){ echo "Manejar";}  ?> Empresas</h3>
+                <a href="@if ($userRole == 2) {{ route('offer.create') }} @endif" class="btn btn-light" style="visibility: hidden;"><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
               </div>
               <div class="card-body" id="show_all_employees">
                 <div style="overflow-x: auto;">
                     <table class="table table-striped table-sm text-center align-middle" id="data-table" >
                         <thead>
                         <tr>
-                            <th>Nombre de la Empresa</th>
-                            <th>Nombre del Puesto</th>
-                            <th>Perfil del puesto</th>
-                            <th>Sueldo</th>
-                            <th>Ubicación</th>
-                            <th>Tipo de contrato</th>
-                            <th>Horario</th>
-                            <th>E-mail Curriculum</th>
-                            <th>Persona de Contacto</th>
-                            <th>Teléfono</th>
-                            <th>Estado</th>
+                            <th>Nombre</th>
+                            <th>RNC</th>
+                            <th>¿Quiere anonimato?</th>
+                            <th>Departamento de Formación</th>
+                            <th>Actividad Económica</th>
+                            <th>Industria</th>
+                            <th>Tamaño de la Empresa</th>
+                            <th>Dirección</th>
+                            <th>Sector</th>
+                            <th>Sección</th>
+                            <th>Municipio</th>
+                            <th>Provincia</th>
+                            <th>Área de Operaciones</th>
+                            <th>Teléfono Principal</th>
+                            <th>Teléfono Directo</th>
+                            <th>Nombre de Contacto</th>
+                            <th>Número del Contacto</th>
+                            <th>Correo del Contacto</th>
                             @if($userRole == 3)
                                 <th>Acciones</th>
                             @endif
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($offers as $offer)
+                            @foreach ($businesses as $business)
                                 <tr>
-                                    <td><?php 
-                                        $business = $businesses->find($offer->business_id); 
-
-                                        if(!empty($business->id)){
-                                            echo $business->name;
-                                        }
-                                        
-                                    ?></td>
-                                    <td>{{ $offer->name }}</td>
-                                    <td>{{ $offer->description }}</td>
-                                    <td>{{ $offer->salary }}</td>
-                                    <td>{{ $offer->location }}</td>
-                                    <td><?php 
-                                        if($offer->contractType == 0){
-                                            echo "Temporal";
-                                        } else{
-                                            echo "Indefinido";
-                                        }
-                                    ?></td>
-                                    <td>{{ $offer->schedule }}</td>
-                                    <td>{{ $offer->contactMail }}</td>
-                                    <td>{{ $offer->contactName }}</td>
-                                    <td>{{ $offer->contactNumber }}</td>
-                                    <td><?php if($offer->status == 0){
-                                        echo "<p style='color: yellow;'><i class='fas fa-exclamation-triangle'></i><b>Pendiente</b></p>";
-                                    }else{
-                                        echo "<p style='color: red;'><i class='fas fa-window-close'></i><b>ASIGNADA</b></p>";
-                                    } ?></td>
+                                    <td>{{ $business->name }}</td>
+                                    <td>{{ $business->RNC }}</td>
+                                    <td>
+                                        <?php if($business->wantsAnonimity){
+                                            echo "Sí";
+                                        }else{
+                                            echo "No";
+                                        } ?>
+                                    </td>
+                                    <td>
+                                        <?php if($business->hasFormationDepartment){
+                                            echo "Sí";
+                                        }else{
+                                            echo "No";
+                                        } ?>
+                                    </td>
+                                    <td>{{ $business->economicalActivity }}</td>
+                                    <td>{{ $business->industry }}</td>
+                                    <td>{{ $business->enterpriseSize }}</td>
+                                    <td>{{ $business->direction }}</td>
+                                    <td>{{ $business->sector }}</td>
+                                    <td>{{ $business->section }}</td>
+                                    <td>{{ $business->municipality }}</td>
+                                    <td>{{ $business->province }}</td>
+                                    <td>{{ $business->countryArea }}</td>
+                                    <td>{{ $business->mainCellphone }}</td>
+                                    <td>{{ $business->directPhone }}</td>
+                                    <td>{{ $business->contactName }}</td>
+                                    <td>{{ $business->contactNumber }}</td>
+                                    <td>{{ $business->contactEmail }}</td>
 
                                     @if($userRole == 3)
                                         <td>
-                                            <a href="{{ route('offer.edit', $offer->id) }}" id="" class="text-success mx-1 editIcon"><i class="bi-pencil-square h4"></i></a>
-                                            
-                                            <form action="{{ route('offer.destroy', $offer->id) }}" method="post">
+                        
+                                            <form action="{{ route('business.destroy', $business->id) }}" method="post">
                                                 @csrf    
                                                 @method('DELETE')
                                                 <button type="submit" id="deleteIcon" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>

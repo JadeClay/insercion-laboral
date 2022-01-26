@@ -15,7 +15,7 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        //
+        return view('business.index', ['users' => User::all(), 'businesses' => Business::all()]);
     }
 
     /**
@@ -25,7 +25,7 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        return view('business.signin');
+        return view('business.signin', ['users' => User::all()]);
     }
 
     /**
@@ -90,6 +90,7 @@ class BusinessController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $success = Business::destroy($id);
+        return redirect(route('home'))->withSuccess('La empresa ha sido eliminada con éxito');
     }
 }

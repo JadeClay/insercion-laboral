@@ -27,7 +27,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-      return view('offer.create');
+      return view('offer.create',['users' => User::all()]);
     } 
 
     /**
@@ -67,7 +67,7 @@ class OfferController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('offer.edit', ['offer' => Offer::find($id), 'users'=> User::all()]);
     }
 
     /**
@@ -79,7 +79,10 @@ class OfferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $offer = Offer::findOrFail($id);
+
+        $offer->update($request->except('_token'));
+        return redirect(route('home'))->withSuccess('La vacante ha sido modificada con exito');
     }
 
     /**
@@ -90,6 +93,7 @@ class OfferController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $success = Offer::destroy($id);
+        return redirect(route('home'))->withSuccess('La vacante ha sido eliminada con éxito');
     }
 }

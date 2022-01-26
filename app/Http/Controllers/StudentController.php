@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
+    public function getDownload(Request $request)
+    {
+        return Storage::download($request->cv_path);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        return view('student.index', ['users'=> User::all(), 'students' => Student::all()]);
     }
 
     /**
@@ -25,7 +31,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.signin');
+        return view('student.signin', ['users'=> User::all()]);
     }
 
     /**

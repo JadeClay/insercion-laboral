@@ -17,11 +17,10 @@
    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 
+   <link rel="stylesheet" href="sweetalert2.min.css">
+
 </head>
 <body>
-
-<!-- header section starts  -->
-
 <!-- header section starts  -->
 @auth
    <?php
@@ -104,87 +103,48 @@
    </form>
 
 </div>
- 
- <!-- account form section ends -->
- 
- <!-- header section ends -->
 
- <div class="container">
-    <div class="title">Registro de vacantes</div>
+<!-- account form section ends -->
+
+<div class="container">
+    <div class="title">Registro de administrador</div>
     <div class="content">
-      <form action="{{ route('offer.store') }}" method="POST">
-        @csrf
+      <form action="{{ route('admin') }}" enctype="multipart/form-data" method="POST">
+          @csrf
         <div class="user-details">
           <div class="input-box">
-            <span class="details">Nombre del Puesto</span>
-            <input type="text" placeholder="Ingresa el nombre del puesto" name="name" required>
+            <span class="details">Email</span>
+            <input type="text" placeholder="Ingresa tus nombres" required name="email">
           </div>
           <div class="input-box">
-            <span class="details">Funciones o perfil del puesto</span>
-            <textarea rows="3" cols="40" placeholder="Ingresa la descripción del puesto" name="description"></textarea>
+            <span class="details">Contraseña</span>
+            <input type="text" placeholder="Ingresa tus apellidos" required name="password">
           </div>
-          <div class="input-box">
-            <span class="details">Sueldo</span>
-            <input type="number" value="0" min="0" oninput="validity.valid||(value='');" placeholder="Ingresa el sueldo" name="salary" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Ubicación</span>
-            <input type="text" placeholder="Ingresa tu dirección" required name="location">
-          </div>
-          <div class="input-box">
-            <span class="details">Tipo de contracto</span>
-            <select class="form-control" name="contractType">
-                <option selected>----Selecciona----</option>
-                <option value="0">Temporal</option>
-                <option value="1">Fijo</option>
-              </select>
-          </div>
-          <div class="input-box">
-            <span class="details">Horario</span>
-            <input type="text" placeholder="Ingresa el horario" name="schedule">
-          </div>
-          <div class="input-box">
-            <span class="details">Correo</span>
-            <input type="email" placeholder="Ingresa el email al que se debe enviar el curriculum" name="contactMail">
-          </div>
-          <div class="input-box">
-            <span class="details">Persona de contacto</span>
-            <input type="text" placeholder="Ingresa el nombre de la persona" required name="contactName">
-          </div>
-          <div class="input-box">
-            <span class="details">Teléfono</span>
-            <input type="tel" placeholder="Ingresa el teléfono" required name="contactNumber">
-          </div>
-          <input type="hidden" name="status" value="0">
-          <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-
-        </div>
-
+            <input type="hidden" name="role" value="3">
         <div class="button">
-          <input type="submit" id="register" value="Crear">
+          <input type="submit" id="register" value="Registrar">
         </div>
       </form>
     </div>
   </div>
 
-  <!-- swiper js link  -->
-  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<!-- swiper js link  -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-  <!-- custom js file link  -->
-  <script src="{{ asset('js/script.js') }}"></script>
+<!-- custom js file link  -->
+<script src="{{ asset('js/script.js') }}"></script>
 
-  <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-
+<script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
 @if (session()->has('success'))
-    <script>
-        window.onload = Swal.fire({
-            title: 'Éxito!',
-            text: '{{ $offers }}',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-        })
-    </script>
+   <script>
+      window.onload = Swal.fire({
+         title: 'Éxito!',
+         text: '{{ session("success") }}',
+         icon: 'success',
+         confirmButtonText: 'Cool'
+      })
+   </script>
 @endif
 
 </body>

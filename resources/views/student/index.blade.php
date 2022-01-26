@@ -111,69 +111,87 @@
           <div class="col-lg-12">
             <div class="card shadow">
               <div class="card-header bg-blue d-flex justify-content-between align-items-center">
-                <h3 class="text-light"><?php if($userRole == 3){ echo "Manejar";}  ?> Vacantes</h3>
-                <a href="@if ($userRole == 2) {{ route('offer.create') }} @endif" class="btn btn-light" ><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
+                <h3 class="text-light"><?php if($userRole == 3){ echo "Manejar";}  ?> Estudiantes y Egresados</h3>
+                <a href="@if ($userRole == 2) {{ route('offer.create') }} @endif" class="btn btn-light" style="visibility: hidden;"><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
               </div>
               <div class="card-body" id="show_all_employees">
                 <div style="overflow-x: auto;">
                     <table class="table table-striped table-sm text-center align-middle" id="data-table" >
                         <thead>
                         <tr>
-                            <th>Nombre de la Empresa</th>
-                            <th>Nombre del Puesto</th>
-                            <th>Perfil del puesto</th>
-                            <th>Sueldo</th>
-                            <th>Ubicación</th>
-                            <th>Tipo de contrato</th>
-                            <th>Horario</th>
-                            <th>E-mail Curriculum</th>
-                            <th>Persona de Contacto</th>
-                            <th>Teléfono</th>
-                            <th>Estado</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Cédula</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Género</th>
+                            <th>Dirección</th>
+                            <th>Municipio</th>
+                            <th>Provincia</th>
+                            <th>Nacionalidad</th>
+                            <th>Teléfono Residencial</th>
+                            <th>Teléfono Célular</th>
+                            <th>¿Tiene licencia de conducir?</th>
+                            <th>¿Tiene vehículo propio?</th>
+                            <th>Año de graduación</th>
+                            <th>Centro Académico</th>
+                            <th>Grado</th>
+                            <th>Matrícula</th>
+                            <th>Carrera Técnica</th>
+                            <th>Años de Experiencia</th>
+                            <th>Área Laboral de Interés</th>
+                            <th>CV</th>
+                            <!-- <th>¿Asignado?</th> -->
                             @if($userRole == 3)
                                 <th>Acciones</th>
                             @endif
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($offers as $offer)
+                            @foreach ($students as $student)
                                 <tr>
-                                    <td><?php 
-                                        $business = $businesses->find($offer->business_id); 
-
-                                        if(!empty($business->id)){
-                                            echo $business->name;
-                                        }
-                                        
-                                    ?></td>
-                                    <td>{{ $offer->name }}</td>
-                                    <td>{{ $offer->description }}</td>
-                                    <td>{{ $offer->salary }}</td>
-                                    <td>{{ $offer->location }}</td>
-                                    <td><?php 
-                                        if($offer->contractType == 0){
-                                            echo "Temporal";
-                                        } else{
-                                            echo "Indefinido";
-                                        }
-                                    ?></td>
-                                    <td>{{ $offer->schedule }}</td>
-                                    <td>{{ $offer->contactMail }}</td>
-                                    <td>{{ $offer->contactName }}</td>
-                                    <td>{{ $offer->contactNumber }}</td>
-                                    <td><?php if($offer->status == 0){
-                                        echo "<p style='color: yellow;'><i class='fas fa-exclamation-triangle'></i><b>Pendiente</b></p>";
-                                    }else{
-                                        echo "<p style='color: red;'><i class='fas fa-window-close'></i><b>ASIGNADA</b></p>";
-                                    } ?></td>
-
+                                    <td>{{ $student->name }}</td>
+                                    <td>{{ $student->surname }}</td>
+                                    <td>{{ $student->identification }}</td>
+                                    <td>{{ $student->birthday }}</td>
+                                    <td>{{ $student->sex }}</td>
+                                    <td>{{ $student->direction }}</td>
+                                    <td>{{ $student->municipality }}</td>
+                                    <td>{{ $student->province }}</td>
+                                    <td>{{ $student->nationality }}</td>
+                                    <td>{{ $student->homeNumber }}</td>
+                                    <td>{{ $student->cellphone }}</td>
+                                    <td>
+                                        <?php if($student->hasDrivingLicense){
+                                            echo "Sí";
+                                        }else{
+                                            echo "No";
+                                        } ?>
+                                    </td>
+                                    <td>
+                                        <?php if($student->hasVehicle){
+                                            echo "Sí";
+                                        }else{
+                                            echo "No";
+                                        } ?>
+                                    </td>
+                                    <td>{{ $student->graduationYear }}</td>
+                                    <td>{{ $student->school }}</td>
+                                    <td>{{ $student->grade }}</td>
+                                    <td>{{ $student->enrollmentID }}</td>
+                                    <td>{{ $student->career }}</td>
+                                    <td>{{ $student->experience }}</td>
+                                    <td>{{ $student->workArea }}</td>
+                                    <td>
+                                        <form action="{{ route('download', $student->cv_path) }}" method="get">
+                                            <input type="hidden" name="cv_path" value="{{ $student->cv_path }}">
+                                            <button type="submit" id="deleteIcon" class="text-danger mx-1 deleteIcon">Descargar</button>
+                                        </form>
+                                    </td>
+                                <!--    <td>{{ $student->offer_id }}</td> -->
                                     @if($userRole == 3)
                                         <td>
-                                            <a href="{{ route('offer.edit', $offer->id) }}" id="" class="text-success mx-1 editIcon"><i class="bi-pencil-square h4"></i></a>
                                             
-                                            <form action="{{ route('offer.destroy', $offer->id) }}" method="post">
-                                                @csrf    
-                                                @method('DELETE')
+                                            <form action="{{ route('offer.destroy', $student->id) }}" method="post">
                                                 <button type="submit" id="deleteIcon" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
                                             </form>
                                         

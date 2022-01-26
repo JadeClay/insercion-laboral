@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\OfferController;
+use App\Models\User;
 
 
 /*
@@ -32,6 +33,14 @@ Route::get('/stats', function () {
 Route::get('/contacts', function(){
     return view('contacts');
 })->name('contacts');
+
+Route::get('/admin', function(){
+    return view('register',["users" => User::all()]);
+})->name('admin');
+
+Route::get('/download', [App\Http\Controllers\StudentController::class, 'getDownload'])->name('download');
+
+Route::post('/admin', [App\Http\Controllers\AdminController::class, 'create']);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 

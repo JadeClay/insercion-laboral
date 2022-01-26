@@ -22,6 +22,12 @@
 <body>
    
 <!-- header section starts  -->
+@auth
+   <?php
+        $authUser = $users->find(Auth::user());
+        $userRole = $authUser->role;
+   ?>
+@endauth
 
 <header class="header">
 
@@ -30,8 +36,8 @@
    <nav class="navbar">
       <div id="close-navbar" class="fas fa-times"></div>
       <a href="@auth {{ route('home') }} @endauth">Inicio</a>
-      <a href="@auth {{ route('offer.index') }} @endauth">Clientes</a>
-      <a href="@auth {{ route('offer.index') }} @endauth">Empresas</a>
+      <a href="@auth {{ route('student.index') }} @endauth">Postulantes</a>
+      <a href="@auth {{ route('business.index') }} @endauth">Empresas</a>
       <a href="@auth {{ route('offer.index') }} @endauth">Vacantes</a>
       <a href="@auth {{ route('stats') }} @endauth">Estadisticas</a>
       <a href="@auth {{ route('contacts') }} @endauth"><div class="fas fa-phone"></div></a>
@@ -89,6 +95,11 @@
       <h3>Registráte</h3>
       <a href="{{ route('student.create') }}" class="btn">Estudiantes y Egresados</a>
       <a href="{{ route('business.create') }}" class="btn">Empresa</a>
+      @auth
+         @if ($userRole == 3)
+            <a href="{{ route('admin') }}" class="btn">Administrador</a>
+         @endif
+      @endauth
    </form>
 
 </div>
