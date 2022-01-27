@@ -35,10 +35,9 @@ document.querySelector('.swiper-btn').onclick = () =>{
   accountForm.classList.add('active');
 }
 
-
-document.querySelector('#close-form').onclick = () =>{
+document.getElementById("close-form").addEventListener('click', function(){
   accountForm.classList.remove('active');
-};
+});
 
 var swiper = new Swiper(".home-slider", {
   autoplay: {
