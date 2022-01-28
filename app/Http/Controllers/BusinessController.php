@@ -15,7 +15,7 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        return view('business.index', ['users' => User::all(), 'businesses' => Business::all()]);
+        return view('business.index', ['users' => User::all(), 'businesses' => Business::paginate(15)]);
     }
 
     /**

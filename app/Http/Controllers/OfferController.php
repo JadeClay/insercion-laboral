@@ -16,7 +16,7 @@ class OfferController extends Controller
      */
     public function index()
     {   
-        $offers = Offer::simplePaginate(5);
+        $offers = Offer::paginate(15);
         return view('offer.index',["offers" => $offers, "users" => User::all(), "businesses" => Business::all()]);
     }
 

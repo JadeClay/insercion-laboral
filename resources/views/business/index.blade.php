@@ -16,7 +16,110 @@
    <link rel="stylesheet" href="{{ asset('css/offer.css') }}">
    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+   <style>
+       ul {
+  padding-left: 2rem;
+}
 
+
+ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.pagination li{
+  font-size: 16px;
+}
+
+
+ul ul {
+  margin-bottom: 0;
+}
+
+b {
+  font-weight: bolder;
+}
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  color: #0d6efd;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-link {
+    transition: none;
+  }
+}
+.page-link:hover {
+  z-index: 2;
+  color: #0a58ca;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+.page-link:focus {
+  z-index: 3;
+  color: #0a58ca;
+  background-color: #e9ecef;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.page-item:not(:first-child) .page-link {
+  margin-left: -1px;
+}
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.page-link {
+  padding: 6px 12px;
+}
+
+.page-item:first-child .page-link {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.page-item:last-child .page-link {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+  .hint-text {
+        float: left;
+        margin-top: 10px;
+        font-size: 16px;
+    }  
+
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+   </style>
 </head>
 <body>
 <!-- header section starts  -->
@@ -193,7 +296,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+                {{$businesses->links()}}
             </div>
             </div>
           </div>
