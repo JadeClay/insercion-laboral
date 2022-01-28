@@ -11,6 +11,8 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css' />
 
+   <!-- Favicon link -->
+   <link rel="icon" href="{{ url('favicon.ico') }}" >
 
     <!-- custom css file link  -->
    <link rel="stylesheet" href="{{ asset('css/offer.css') }}">

@@ -13,6 +13,9 @@
    <!-- swiper css link  -->
    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
+  <!-- Favicon link -->
+  <link rel="icon" href="{{ url('favicon.ico') }}" >
+
    <!-- custom css file link  -->
    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
