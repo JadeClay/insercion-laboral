@@ -31,23 +31,6 @@ document.querySelector('#account-btn').onclick = () =>{
   accountForm.classList.add('active');
 }
 
-document.querySelector('.swiper-btn').onclick = () =>{
-  accountForm.classList.add('active');
-}
-
 document.getElementById("close-form").addEventListener('click', function(){
   accountForm.classList.remove('active');
-});
-
-var swiper = new Swiper(".home-slider", {
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable:true,
-  },
-  loop:true,
-  grabCursor:true,
 });

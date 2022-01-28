@@ -158,6 +158,8 @@
 
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
+<script src="{{ asset('js/swiper.js') }}"></script>
+
 @if (session()->has('success'))
    <script>
       window.onload = Swal.fire({
