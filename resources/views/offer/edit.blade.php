@@ -123,6 +123,16 @@
               </select>
           </div>
 
+          <div class="input-box">
+            <span class="details">Asignar estudiante</span>
+            <select class="form-control" name="student_id">
+                <option selected>----Selecciona----</option>
+                @foreach ($students as $student)
+                  <option value="{{ $student->id }}">{{ $student->surname . ', ' . $student->name}}</option>
+                @endforeach         
+              </select>
+          </div>
+
         </div>
 
         <div class="button">

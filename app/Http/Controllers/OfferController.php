@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Offer;
 use App\Models\User;
 use App\Models\Business;
+use App\Models\Student;
 
 class OfferController extends Controller
 {
@@ -67,7 +68,7 @@ class OfferController extends Controller
      */
     public function edit($id)
     {
-        return view('offer.edit', ['offer' => Offer::find($id), 'users'=> User::all()]);
+        return view('offer.edit', ['offer' => Offer::find($id), 'users'=> User::all(), 'students'=> Student::all()]);
     }
 
     /**
@@ -81,7 +82,12 @@ class OfferController extends Controller
     {
         $offer = Offer::findOrFail($id);
 
-        $offer->update($request->except('_token'));
+        $offer->update($request->except('_token','student_id'));
+
+        $student = Student::findOrFail($request->student_id);
+        $student->offer_id = $id;
+        $student->save();
+        
         return redirect(route('home'))->withSuccess('La vacante ha sido modificada con exito');
     }
 

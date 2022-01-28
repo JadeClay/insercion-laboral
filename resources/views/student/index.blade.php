@@ -243,7 +243,7 @@ b {
                             <th>Años de Experiencia</th>
                             <th>Área Laboral de Interés</th>
                             <th>CV</th>
-                            <!-- <th>¿Asignado?</th> -->
+                            <th>ID de Vacante Asignada</th>
                             @if($userRole == 3)
                                 <th>Acciones</th>
                             @endif
@@ -290,7 +290,7 @@ b {
                                             <button type="submit" id="deleteIcon" class="text-danger mx-1 deleteIcon">Descargar</button>
                                         </form>
                                     </td>
-                                <!--    <td>{{ $student->offer_id }}</td> -->
+                                    <td>{{ $student->offer_id }}</td>
                                     @if($userRole == 3)
                                         <td>
                                             

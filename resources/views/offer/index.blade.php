@@ -222,6 +222,7 @@ b {
                     <table class="table table-striped table-sm text-center align-middle" id="data-table" >
                         <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Nombre de la Empresa</th>
                             <th>Nombre del Puesto</th>
                             <th>Perfil del puesto</th>
@@ -241,6 +242,7 @@ b {
                         <tbody>
                             @foreach ($offers as $offer)
                                 <tr>
+                                    <td>{{ $offer->id }}</td>
                                     <td><?php 
                                         $business = $businesses->find($offer->business_id); 
 
