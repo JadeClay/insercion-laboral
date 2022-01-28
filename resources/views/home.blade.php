@@ -19,8 +19,6 @@
    <!-- custom css file link  -->
    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-   <link rel="stylesheet" href="sweetalert2.min.css">
-
 </head>
 <body>
    
@@ -126,6 +124,7 @@
          <section class="swiper-slide slide" style="background: url(images/IMG_0550.jpg) no-repeat;">
             <div class="content">
                <h3>La pasantía, ¡tu entrada al mundo laboral!</h3>
+               <button class="btn" id="gotoregister">Regístrate</button>
                <button class="swiper-btn"></button>
             </div>
          </section>
@@ -133,6 +132,7 @@
          <section class="swiper-slide slide" style="background: url(images/IMG-0377.jpg) no-repeat;">
             <div class="content">
                <h3>Oficina de Intermediación Laboral y Pasantías</h3>
+               <button class="btn" id="gotoregister1">Regístrate</button>
                <button class="swiper-btn"></button>
             </div>
          </section>
@@ -140,6 +140,7 @@
          <section class="swiper-slide slide" style="background: url(images/IMG_0828.jpg) no-repeat;">
             <div class="content">
                <h3>Conéctate con empresas por todo el país</h3>
+               <button class="btn" id="gotoregister2">Regístrate</button>
                <button class="swiper-btn"></button>
             </div>
          </section>

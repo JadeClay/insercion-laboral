@@ -5,6 +5,9 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\OfferController;
 use App\Models\User;
+use App\Models\Student;
+use App\Models\Offer;
+use App\Models\Business;
 
 
 /*
@@ -26,8 +29,16 @@ Route::resource('business', BusinessController::class);
 
 Route::resource('offer', OfferController::class);
 
+Route::get('/test', function () {
+    return 0;
+});
+
 Route::get('/stats', function () {
-    return view('stats',["users" => User::all()]);
+    $studentsSignedUp = Student::all();
+    $businessesSignedUp = Business::all();
+    $studentsAvailable = Student::whereNull('offer_id');
+    $offers = Offer::where('status','=','0');
+    return view('stats',["users" => User::all(), "studentsSignedUp" => $studentsSignedUp, "businessesSignedUp" => $businessesSignedUp, "studentsAvailable" => $studentsAvailable, "offers" => $offers]);
 })->name('stats');
 
 Route::get('/contacts', function(){
