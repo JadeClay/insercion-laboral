@@ -121,25 +121,22 @@
 
          <section class="swiper-slide slide" style="background: url(images/IMG_0550.jpg) no-repeat;">
             <div class="content">
-               <h3>la pasantía, tu entrada al mundo laboral!</h3>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas impedit labore dolore unde, quidem corrupti?</p>
-               <button class="swiper-btn btn">iniciar sesión</button>
+               <h3>La pasantía, ¡tu entrada al mundo laboral!</h3>
+               <button class="swiper-btn"></button>
             </div>
          </section>
 
-         <section class="swiper-slide slide" style="background: url(images/IMG_0377.jpg) no-repeat;">
+         <section class="swiper-slide slide" style="background: url(images/IMG-0377.jpg) no-repeat;">
             <div class="content">
-               <h3>oficinas de intermediación laboral y pasantías </h3>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas impedit labore dolore unde, quidem corrupti?</p>
-               <button class="swiper-btn btn">iniciar sesión</button>
+               <h3>Oficina de Intermediación Laboral y Pasantías</h3>
+               <button class="swiper-btn"></button>
             </div>
          </section>
 
          <section class="swiper-slide slide" style="background: url(images/IMG_0828.jpg) no-repeat;">
             <div class="content">
-               <h3>Conectate con empresas por todo el país</h3>
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas impedit labore dolore unde, quidem corrupti?</p>
-               <button class="swiper-btn btn">iniciar sesión</button>
+               <h3>Conéctate con empresas por todo el país</h3>
+               <button class="swiper-btn"></button>
             </div>
          </section>
 
