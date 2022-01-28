@@ -138,12 +138,16 @@ b {
 
    <nav class="navbar">
       <div id="close-navbar" class="fas fa-times"></div>
-      <a href="@auth {{ route('home') }} @endauth">Inicio</a>
-      <a href="@auth {{ route('student.index') }} @endauth">Postulantes</a>
-      <a href="@auth {{ route('business.index') }} @endauth">Empresas</a>
-      <a href="@auth {{ route('offer.index') }} @endauth">Vacantes</a>
-      <a href="@auth {{ route('stats') }} @endauth">Estadisticas</a>
-      <a href="@auth {{ route('contacts') }} @endauth"><div class="fas fa-phone"></div></a>
+      <a href="{{ route('home') }}">Inicio</a>
+      @auth
+         @if ($userRole >= 2)
+         <a href="{{ route('student.index') }}">Postulantes</a>
+         @endif
+      @endauth
+      <a href="{{ route('business.index') }}">Empresas</a>
+      <a href="{{ route('offer.index') }}">Vacantes</a>
+      <a href="{{ route('stats') }}">Estadisticas</a>
+      <a href="{{ route('contacts') }}"><div class="fas fa-phone"></div></a>
    </nav>
 
    <div class="icons">
@@ -216,8 +220,8 @@ b {
           <div class="col-lg-12">
             <div class="card shadow">
               <div class="card-header bg-blue d-flex justify-content-between align-items-center">
-                <h3 class="text-light"><?php if($userRole == 3){ echo "Manejar";}  ?> Empresas</h3>
-                <a href="@if ($userRole == 2) {{ route('offer.create') }} @endif" class="btn btn-light" style="visibility: hidden;"><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
+                <h3 class="text-light">@auth <?php if($userRole == 3){ echo "Manejar";}  ?> @endauth Empresas</h3>
+                <a href="@auth @if ($userRole == 2) {{ route('offer.create') }} @endif @endauth" class="btn btn-light" style="visibility: hidden;"><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
               </div>
               <div class="card-body" id="show_all_employees">
                 <div style="overflow-x: auto;">
@@ -225,74 +229,90 @@ b {
                         <thead>
                         <tr>
                             <th>Nombre</th>
-                            <th>RNC</th>
-                            <th>¿Quiere anonimato?</th>
-                            <th>Departamento de Formación</th>
+                          @auth
+                            @if ($userRole == 3)
+                              <th>RNC</th>
+                              <th>¿Quiere anonimato?</th>
+                              <th>Departamento de Formación</th>
+                            @endif
+                          @endauth
                             <th>Actividad Económica</th>
                             <th>Industria</th>
-                            <th>Tamaño de la Empresa</th>
-                            <th>Dirección</th>
-                            <th>Sector</th>
-                            <th>Sección</th>
+                          @auth
+                            @if ($userRole == 3)
+                              <th>Tamaño de la Empresa</th>
+                              <th>Dirección</th>
+                              <th>Sector</th>
+                              <th>Sección</th>
+                            @endif
+                          @endauth
                             <th>Municipio</th>
                             <th>Provincia</th>
+                          @auth
+                            @if ($userRole == 3)
                             <th>Área de Operaciones</th>
                             <th>Teléfono Principal</th>
                             <th>Teléfono Directo</th>
                             <th>Nombre de Contacto</th>
                             <th>Número del Contacto</th>
                             <th>Correo del Contacto</th>
-                            @if($userRole == 3)
-                                <th>Acciones</th>
+                            <th>Acciones</th>
                             @endif
+                          @endauth
                         </tr>
                         </thead>
                         <tbody>
                             @foreach ($businesses as $business)
                                 <tr>
                                     <td>{{ $business->name }}</td>
-                                    <td>{{ $business->RNC }}</td>
-                                    <td>
-                                        <?php if($business->wantsAnonimity){
-                                            echo "Sí";
-                                        }else{
-                                            echo "No";
-                                        } ?>
-                                    </td>
-                                    <td>
-                                        <?php if($business->hasFormationDepartment){
-                                            echo "Sí";
-                                        }else{
-                                            echo "No";
-                                        } ?>
-                                    </td>
-                                    <td>{{ $business->economicalActivity }}</td>
-                                    <td>{{ $business->industry }}</td>
-                                    <td>{{ $business->enterpriseSize }}</td>
-                                    <td>{{ $business->direction }}</td>
-                                    <td>{{ $business->sector }}</td>
-                                    <td>{{ $business->section }}</td>
-                                    <td>{{ $business->municipality }}</td>
-                                    <td>{{ $business->province }}</td>
-                                    <td>{{ $business->countryArea }}</td>
-                                    <td>{{ $business->mainCellphone }}</td>
-                                    <td>{{ $business->directPhone }}</td>
-                                    <td>{{ $business->contactName }}</td>
-                                    <td>{{ $business->contactNumber }}</td>
-                                    <td>{{ $business->contactEmail }}</td>
-
-                                    @if($userRole == 3)
+                                    @auth
+                                        @if ($userRole == 3)
+                                        <td>{{ $business->RNC }}</td>
                                         <td>
-                        
-                                            <form action="{{ route('business.destroy', $business->id) }}" method="post">
-                                                @csrf    
-                                                @method('DELETE')
-                                                <button type="submit" id="deleteIcon" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
-                                            </form>
-                                        
+                                          <?php if($business->wantsAnonimity){
+                                              echo "Sí";
+                                          }else{
+                                              echo "No";
+                                          } ?>
                                         </td>
-                                    @endif                                        
-                    
+                                        <td>
+                                          <?php if($business->hasFormationDepartment){
+                                              echo "Sí";
+                                          }else{
+                                              echo "No";
+                                          } ?>
+                                        </td>
+                                        @endif
+                                      @endauth
+                                      <td>{{ $business->economicalActivity }}</td>
+                                      <td>{{ $business->industry }}</td>
+                                      @auth
+                                        @if ($userRole == 3)
+                                        <td>{{ $business->enterpriseSize }}</td>
+                                        <td>{{ $business->direction }}</td>
+                                        <td>{{ $business->sector }}</td>
+                                        <td>{{ $business->section }}</td>
+                                        @endif
+                                      @endauth
+                                      <td>{{ $business->municipality }}</td>
+                                      <td>{{ $business->province }}</td>
+                                      @auth
+                                        @if ($userRole == 3)
+                                        <td>{{ $business->countryArea }}</td>
+                                        <td>{{ $business->mainCellphone }}</td>
+                                        <td>{{ $business->directPhone }}</td>
+                                        <td>{{ $business->contactName }}</td>
+                                        <td>{{ $business->contactNumber }}</td>
+                                        <td>{{ $business->contactEmail }}</td>
+                                        <td>
+                                          <form action="{{ route('business.destroy', $business->id) }}" method="post">
+                                            @csrf    
+                                            @method('DELETE')
+                                            <button type="submit" id="deleteIcon" class="text-danger mx-1 deleteIcon"><i class="bi-trash h4"></i></button>
+                                          </form>
+                                        </td>
+                                        @endif
+                                      @endauth                                
                                 </tr>
                             @endforeach
                         </tbody>

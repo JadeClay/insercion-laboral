@@ -27,11 +27,11 @@ Route::resource('business', BusinessController::class);
 Route::resource('offer', OfferController::class);
 
 Route::get('/stats', function () {
-    return view('stats');
+    return view('stats',["users" => User::all()]);
 })->name('stats');
 
 Route::get('/contacts', function(){
-    return view('contacts');
+    return view('contacts',["users" => User::all()]);
 })->name('contacts');
 
 Route::get('/admin', function(){

@@ -24,7 +24,6 @@
 <body>
 
 <!-- header section starts  -->
-
 <!-- header section starts  -->
 @auth
    <?php
@@ -39,12 +38,16 @@
 
    <nav class="navbar">
       <div id="close-navbar" class="fas fa-times"></div>
-      <a href="@auth {{ route('home') }} @endauth">Inicio</a>
-      <a href="@auth {{ route('student.index') }} @endauth">Postulantes</a>
-      <a href="@auth {{ route('business.index') }} @endauth">Empresas</a>
-      <a href="@auth {{ route('offer.index') }} @endauth">Vacantes</a>
-      <a href="@auth {{ route('stats') }} @endauth">Estadisticas</a>
-      <a href="@auth {{ route('contacts') }} @endauth"><div class="fas fa-phone"></div></a>
+      <a href="{{ route('home') }}">Inicio</a>
+      @auth
+         @if ($userRole >= 2)
+         <a href="{{ route('student.index') }}">Postulantes</a>
+         @endif
+      @endauth
+      <a href="{{ route('business.index') }}">Empresas</a>
+      <a href="{{ route('offer.index') }}">Vacantes</a>
+      <a href="{{ route('stats') }}">Estadisticas</a>
+      <a href="{{ route('contacts') }}"><div class="fas fa-phone"></div></a>
    </nav>
 
    <div class="icons">

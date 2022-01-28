@@ -125,6 +125,7 @@ b {
 </head>
 <body>
 <!-- header section starts  -->
+<!-- header section starts  -->
 @auth
    <?php
         $authUser = $users->find(Auth::user());
@@ -138,12 +139,16 @@ b {
 
    <nav class="navbar">
       <div id="close-navbar" class="fas fa-times"></div>
-      <a href="@auth {{ route('home') }} @endauth">Inicio</a>
-      <a href="@auth {{ route('student.index') }} @endauth">Postulantes</a>
-      <a href="@auth {{ route('business.index') }} @endauth">Empresas</a>
-      <a href="@auth {{ route('offer.index') }} @endauth">Vacantes</a>
-      <a href="@auth {{ route('stats') }} @endauth">Estadisticas</a>
-      <a href="@auth {{ route('contacts') }} @endauth"><div class="fas fa-phone"></div></a>
+      <a href="{{ route('home') }}">Inicio</a>
+      @auth
+         @if ($userRole >= 2)
+         <a href="{{ route('student.index') }}">Postulantes</a>
+         @endif
+      @endauth
+      <a href="{{ route('business.index') }}">Empresas</a>
+      <a href="{{ route('offer.index') }}">Vacantes</a>
+      <a href="{{ route('stats') }}">Estadisticas</a>
+      <a href="{{ route('contacts') }}"><div class="fas fa-phone"></div></a>
    </nav>
 
    <div class="icons">
@@ -216,8 +221,8 @@ b {
           <div class="col-lg-12">
             <div class="card shadow">
               <div class="card-header bg-blue d-flex justify-content-between align-items-center">
-                <h3 class="text-light"><?php if($userRole == 3){ echo "Manejar";}  ?> Vacantes</h3>
-                <a href="@if ($userRole == 2) {{ route('offer.create') }} @endif" class="btn btn-light" ><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
+                <h3 class="text-light">@auth <?php if($userRole == 3){ echo "Manejar";}  ?> @endauth Vacantes</h3>
+                <a href="@auth @if ($userRole == 2) {{ route('offer.create') }} @endif @endauth" class="btn btn-light" ><i class="bi-plus-circle me-2"></i>Añadir Nueva Vacante</a>   
               </div>
               <div class="card-body" id="show_all_employees">
                 <div style="overflow-x: auto;">
@@ -232,13 +237,20 @@ b {
                             <th>Ubicación</th>
                             <th>Tipo de contrato</th>
                             <th>Horario</th>
-                            <th>E-mail Curriculum</th>
-                            <th>Persona de Contacto</th>
-                            <th>Teléfono</th>
+                            @auth
+                              @if ($userRole == 3)
+                              <th>E-mail Curriculum</th>
+                              <th>Persona de Contacto</th>
+                              <th>Teléfono</th>
+                              @endif
+                            @endauth
                             <th>Estado</th>
-                            @if($userRole == 3)
-                                <th>Acciones</th>
-                            @endif
+                            @auth
+                              @if($userRole == 3)
+                                  <th>Acciones</th>
+                              @endif
+                            @endauth
+
                         </tr>
                         </thead>
                         <tbody>
@@ -265,15 +277,20 @@ b {
                                         }
                                     ?></td>
                                     <td>{{ $offer->schedule }}</td>
-                                    <td>{{ $offer->contactMail }}</td>
-                                    <td>{{ $offer->contactName }}</td>
-                                    <td>{{ $offer->contactNumber }}</td>
+                                    @auth
+                                      @if ($userRole == 3)
+                                      <td>{{ $offer->contactMail }}</td>
+                                      <td>{{ $offer->contactName }}</td>
+                                      <td>{{ $offer->contactNumber }}</td>
+                                      @endif
+                                    @endauth
+
                                     <td><?php if($offer->status == 0){
                                         echo "<p style='color: yellow;'><i class='fas fa-exclamation-triangle'></i><b>Pendiente</b></p>";
                                     }else{
                                         echo "<p style='color: red;'><i class='fas fa-window-close'></i><b>ASIGNADA</b></p>";
                                     } ?></td>
-
+                                  @auth
                                     @if($userRole == 3)
                                         <td>
                                             <a href="{{ route('offer.edit', $offer->id) }}" id="" class="text-success mx-1 editIcon"><i class="bi-pencil-square h4"></i></a>
@@ -286,7 +303,7 @@ b {
                                         
                                         </td>
                                     @endif                                        
-                    
+                                  @endauth
                                 </tr>
                             @endforeach
                         </tbody>
