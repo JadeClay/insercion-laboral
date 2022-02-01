@@ -173,25 +173,8 @@
     </div>
   </div>
 
-  <!-- swiper js link  -->
-  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-  <!-- custom js file link  -->
-  <script src="{{ asset('js/script.js') }}"></script>
-
-  <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
-
-
-@if (session()->has('success'))
-    <script>
-        window.onload = Swal.fire({
-            title: 'Éxito!',
-            text: '{{ $offers }}',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-        })
-    </script>
-@endif
+<!-- custom js file link  -->
+<script src="{{ asset('js/script.js') }}"></script>
 
 </body>
 </html>

@@ -161,6 +161,8 @@
 <!-- custom js file link  -->
 <script src="{{ asset('js/script.js') }}"></script>
 
+<script src="{{ asset('js/slider.js') }}"></script>
+
 <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
 
 <script src="{{ asset('js/swiper.js') }}"></script>
