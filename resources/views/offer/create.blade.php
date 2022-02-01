@@ -162,7 +162,7 @@
             <input type="tel" placeholder="Ingresa el teléfono" required name="contactNumber">
           </div>
           <input type="hidden" name="status" value="0">
-          <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+          <input type="hidden" name="user_id" value="@auth {{ Auth::user()->id }} @endauth">
 
         </div>
 

@@ -46,7 +46,7 @@ class OfferController extends Controller
             $affectedRows = Offer::where('id', '=', $offer->id)->update(['business_id' => $id]);
         }
         
-        return redirect(route('home'))->withSuccess('Se ha registrado con éxito!');;
+        return redirect(route('home'))->withSuccess('Se ha creado la vacante con éxito!');;
     }
 
     /**
