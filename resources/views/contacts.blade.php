@@ -145,15 +145,14 @@
       <div class="icons">
          <i class="fas fa-phone"></i>
          <h3>teléfono</h3>
-         <p>+1 829-456-7890</p>
-         <p>+1 809-222-3333</p>
+         <p>+1 (809) 724 5700</p>
+         <p>Ext. 260</p>
       </div>
 
       <div class="icons">
          <i class="fas fa-envelope"></i>
          <h3>Correo Electrónico</h3>
-         <p>ipisa@gmail.com</p>
-         <p>who@gmail.com</p>
+         <p>insercionlaboral@ipisa.edu.do</p>
       </div>
 
       <div class="icons">

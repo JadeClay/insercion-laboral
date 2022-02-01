@@ -150,7 +150,7 @@
                         </div>
                       </div>
                       <p class="mt-3 mb-0 text-muted text-sm">
-                        <span class="text-nowrap">¡Corre y aprovecha la tuya propia!</span>
+                        <span class="text-nowrap">¡Corre y consigue la tuya!</span>
                       </p>
                     </div>
                   </div>
