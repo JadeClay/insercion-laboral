@@ -167,7 +167,6 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.661976977862!2d-70.68655718468358!3d19.427005645892695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1cf13d5f1c97b%3A0x13c741931d8d644f!2sInstituto%20Polit%C3%A9cnico%20Industrial%20de%20Santiago!5e0!3m2!1ses!2sdo!4v1643337125600!5m2!1ses!2sdo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
    </div>
  
-
 </section>
 
 

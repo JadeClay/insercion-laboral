@@ -19,6 +19,8 @@
    <!-- custom css file link  -->
    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+   <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+
 </head>
 <body>
    
@@ -150,6 +152,115 @@
       <div class="swiper-pagination"></div>
 
    </div>
+
+</section>
+
+<!-- perfil profesional -->
+
+<section class="courses">
+
+   <h1 class="heading">Conoce el perfil de nuestros talleres</h1>
+
+   <div class="box-container">
+
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/info.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3>Desarrollo y Administración de Aplicaciones Informáticas.</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+
+            <form action="{{ }}" method="get"></form>
+            <button class="btn">Descargar PDF</button>
+          
+         </div>
+      </div>
+
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/contabilidad.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3> Gestión Administrativa y tributaria.</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+           
+            <button class="btn">Descargar PDF</button>
+         </div>
+      </div>
+
+     
+
+      
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/muebles.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3>muebles y Estructuras de Madera</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+            <button class="btn">Descargar PDF</button>
+         </div>
+      </div>
+
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/confeccion.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3>confección y patronaje</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+            <button class="btn">Descargar PDF</button>
+         </div>
+      </div>
+
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/electronica.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3>equipos electrónicos</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+            <button class="btn">Descargar PDF</button>
+         </div>
+      </div>
+
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/electricidad.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3>instalaciones eléctricas</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+            <button class="btn">Descargar PDF</button>
+         </div>
+      </div>
+
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/automotriz.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3>electromecánica de vehículos</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+            <button class="btn">Descargar PDF</button>
+         </div>
+      </div>
+
+      <div class="box">
+         <div class="image">
+            <img src="{{ url('images/mecanizado.jpg') }}" alt="">
+         </div>
+         <div class="content">
+            <h3>mecanizado</h3>
+            <p>Descarga el perfil dándole un click al butón de abajo</p>
+            <button class="btn">Descargar PDF</button>
+         </div>
+      </div>
+     
+   </div>
+
+
 
 </section>
 

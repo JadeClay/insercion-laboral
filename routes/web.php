@@ -51,6 +51,32 @@ Route::get('/admin', function(){
 
 Route::get('/download', [App\Http\Controllers\StudentController::class, 'getDownload'])->name('download');
 
+Route::get('/download-perfil', function($perfil){
+    switch ($perfil) {
+        case 'inf':
+            Storage::download('')
+            break;
+        case 'gat':
+            # code...
+            break;
+        case 'muebles':
+            break;
+        case 'patronaje':
+            break;
+        case 'elca':
+            break;
+        case 'eldad':
+            break;
+        case 'auto':
+            break;
+        case 'mecanizado':
+            break;
+        default:
+            return view('home');
+            break;
+    }
+})->name('download-perfil');
+
 Route::post('/admin', [App\Http\Controllers\AdminController::class, 'create']);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
