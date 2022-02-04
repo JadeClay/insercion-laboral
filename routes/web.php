@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\OfferController;
@@ -51,25 +52,31 @@ Route::get('/admin', function(){
 
 Route::get('/download', [App\Http\Controllers\StudentController::class, 'getDownload'])->name('download');
 
-Route::get('/download-perfil', function($perfil){
-    switch ($perfil) {
+Route::get('/download-perfil', function(Request $request){
+    switch ($request->perfil) {
         case 'inf':
-            Storage::download('')
+            return Storage::download('perf/Perfil-INF.pdf');
             break;
         case 'gat':
-            # code...
+            return Storage::download('perf/Perfil-GAT.pdf');
             break;
         case 'muebles':
+            return Storage::download('perf/Perfil-Muebles.pdf');
             break;
         case 'patronaje':
+            return Storage::download('perf/Perfil-Patronaje.pdf');
             break;
         case 'elca':
+            return Storage::download('perf/Perfil-ELCA.pdf');
             break;
         case 'eldad':
+            return Storage::download('perf/Perfil-ELDAD.pdf');
             break;
         case 'auto':
+            return Storage::download('perf/Perfil-Automotriz.pdf');
             break;
         case 'mecanizado':
+            return Storage::download('perf/Perfil-Mecanizado.pdf');
             break;
         default:
             return view('home');

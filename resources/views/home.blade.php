@@ -171,8 +171,10 @@
             <h3>Desarrollo y Administración de Aplicaciones Informáticas.</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
 
-            <form action="{{ }}" method="get"></form>
-            <button class="btn">Descargar PDF</button>
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="inf">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
           
          </div>
       </div>
@@ -184,8 +186,11 @@
          <div class="content">
             <h3> Gestión Administrativa y tributaria.</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
-           
-            <button class="btn">Descargar PDF</button>
+            
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="gat">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
          </div>
       </div>
 
@@ -199,7 +204,11 @@
          <div class="content">
             <h3>muebles y Estructuras de Madera</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
-            <button class="btn">Descargar PDF</button>
+            
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="muebles">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
          </div>
       </div>
 
@@ -210,7 +219,11 @@
          <div class="content">
             <h3>confección y patronaje</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
-            <button class="btn">Descargar PDF</button>
+            
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="patronaje">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
          </div>
       </div>
 
@@ -221,7 +234,10 @@
          <div class="content">
             <h3>equipos electrónicos</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
-            <button class="btn">Descargar PDF</button>
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="elca">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
          </div>
       </div>
 
@@ -232,7 +248,11 @@
          <div class="content">
             <h3>instalaciones eléctricas</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
-            <button class="btn">Descargar PDF</button>
+            
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="eldad">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
          </div>
       </div>
 
@@ -243,7 +263,11 @@
          <div class="content">
             <h3>electromecánica de vehículos</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
-            <button class="btn">Descargar PDF</button>
+            
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="auto">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
          </div>
       </div>
 
@@ -254,15 +278,57 @@
          <div class="content">
             <h3>mecanizado</h3>
             <p>Descarga el perfil dándole un click al butón de abajo</p>
-            <button class="btn">Descargar PDF</button>
+            <form action="{{ route('download-perfil') }}" method="get">
+               <input type="hidden" name="perfil" value="mecanizado">
+               <input type="submit" class="btn" value="Descargar PDF"></input>
+            </form>
          </div>
       </div>
      
    </div>
 
+</section>
 
+<section class="footer">
+
+   <div class="box-container">
+
+      <div class="box">
+         <h3> <i class="fas fa-building"></i> OILP-IPISA </h3>
+         <p>El Instituto Politécnico Industrial de Santiago (IPISA), es una institución educativa técnico profesional con uno de los más altos niveles de expansión y crecimiento en este tipo de modelo de educación, así como también, acorde a la vanguardia de los nuevos tiempos.</p>
+         <div class="share">
+            <a href="#" class="fab fa-facebook-f"></a>
+            <a href="#" class="fab fa-twitter"></a>
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+         </div>
+      </div>
+
+      <div class="box">
+         <h3>enlaces rápidos</h3>
+         <a href="home.html" class="link">inicio</a>
+         <a href="about.html" class="link">sobre nosotros</a>
+         <a href="courses.html" class="link">registros</a>
+         <a href="contact.html" class="link">contacto</a>
+      </div>
+
+      <div class="box">
+         <h3>contáctanos</h3>
+         <a href="tel:8097245700" class="link">+1 (809) 724-5700</a>
+         <a href="mailto:info@ipisa.edu.do" class="link">info@ipisa.edu.do</a>
+         <a href="https://www.google.com/maps/place/Instituto+Polit%C3%A9cnico+Industri…3685!3m4!1s0x0:0x13c741931d8d644f!8m2!3d19.4270006!4d-70.6843685?hl=es-MX" class="link">Av. Hispanoamericana, Km 1 Santiago, Zona Sur, República Dominicana</a>
+      </div>
+
+     
+
+   </div>
+
+   <div class="credit"> OILP <span>IPISA</span> | © 2021 </div>
 
 </section>
+
+<!-- footer section ends -->
+
 
 <!-- home section ends -->
 
