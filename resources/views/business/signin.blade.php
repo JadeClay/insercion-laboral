@@ -232,23 +232,20 @@
          <h3> <i class="fas fa-building"></i> OILP-IPISA </h3>
          <p>El Instituto Politécnico Industrial de Santiago (IPISA), es una institución educativa técnico profesional con uno de los más altos niveles de expansión y crecimiento en este tipo de modelo de educación, así como también, acorde a la vanguardia de los nuevos tiempos.</p>
          <div class="share">
-            <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-twitter"></a>
-            <a href="#" class="fab fa-instagram"></a>
-            <a href="#" class="fab fa-linkedin"></a>
+            <a href="https://web.facebook.com/IPISASDB" class="fab fa-facebook-f"></a>
+            <a href="https://www.instagram.com/ipisasdb/?hl=es" class="fab fa-instagram"></a>
          </div>
       </div>
 
       <div class="box">
-         <h3>enlaces rápidos</h3>
-         <a href="home.html" class="link">inicio</a>
-         <a href="about.html" class="link">sobre nosotros</a>
-         <a href="courses.html" class="link">registros</a>
-         <a href="contact.html" class="link">contacto</a>
+         <h3>Enlaces Rápidos</h3>
+         <a href="{{ route('home') }}" class="link">Inicio</a>
+         <a href="{{ route('stats') }}" class="link">Estadisticas</a>
+         <a href="{{ route('contacts') }}" class="link">Contacto</a>
       </div>
 
       <div class="box">
-         <h3>contáctanos</h3>
+         <h3>Contáctanos</h3>
          <a href="tel:8097245700" class="link">+1 (809) 724-5700</a>
          <a href="mailto:info@ipisa.edu.do" class="link">info@ipisa.edu.do</a>
          <a href="https://www.google.com/maps/place/Instituto+Polit%C3%A9cnico+Industri…3685!3m4!1s0x0:0x13c741931d8d644f!8m2!3d19.4270006!4d-70.6843685?hl=es-MX" class="link">Av. Hispanoamericana, Km 1 Santiago, Zona Sur, República Dominicana</a>
@@ -263,6 +260,7 @@
 </section>
 
 <!-- footer section ends -->
+
 
 
 <!-- swiper js link  -->
