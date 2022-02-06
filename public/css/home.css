@@ -60,3 +60,35 @@
     line-height: 2;
     color: #777;
   }
+
+  .about{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;    
+}
+
+.about .image{
+    flex:1 1 40rem;
+    padding: 50px;
+}
+
+.about .image img{
+    height:65vh;
+    width:100%;
+}
+
+.about .content{
+    flex:1 1 45rem;
+}
+
+.about .content h3{
+    font-size: 3.5rem;
+    color:#666;
+}
+
+.about .content p{
+    font-size: 2rem;
+    color:#666;
+    padding:1rem 0;
+}

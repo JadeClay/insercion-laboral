@@ -155,6 +155,20 @@
 
 </section>
 
+<section class="about" id="about">
+
+   <div class="image">
+       <img src="{{ url('images/ipisa_about.jpg') }}" alt="">
+   </div>
+
+   <div class="content">
+       <h3>¿Por qué elegir IPISA?</h3>
+       <p>El Instituto Politécnico Industrial de Santiago (IPISA), es una institución educativa técnico profesional con uno de los más altos niveles de expansión y crecimiento en este tipo de modelo de educación, así como también, acorde a la vanguardia de los nuevos tiempos.</p>
+       <button class="btn" id="about_btn">Regístrate</button>
+   </div>
+
+</section>
+
 <!-- perfil profesional -->
 
 <section class="courses">
